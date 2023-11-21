@@ -14,7 +14,6 @@ export const Container = styled.header`
 
   > .center {
     width: 50px;
-    height: 18px;
     border: none;
   }
 
@@ -46,6 +45,12 @@ export const Container = styled.header`
 
     > h1 {
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+
+      font-family: Roboto;
+      font-size: 21px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: normal;
     }
   }
 
