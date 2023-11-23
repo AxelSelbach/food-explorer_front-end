@@ -1,5 +1,5 @@
+import { FaReceipt } from 'react-icons/fa'
 import headerLogo from '../../assets/headerLogo.png'
-import nota from '../../assets/nota.png'
 import { Container } from './styles'
 
 export function Header() {
@@ -14,8 +14,9 @@ export function Header() {
         <h1>Food Explorer</h1>
       </div>
 
-      <button>
-        <img src={nota} alt="" />
+      <button className="receipt">
+        <FaReceipt />
+        <div className="requestsNumber">0</div>
       </button>
     </Container>
   )

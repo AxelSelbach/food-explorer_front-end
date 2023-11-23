@@ -57,5 +57,22 @@ export const Container = styled.header`
   > button {
     background-color: transparent;
     border: none;
+    position: relative;
+
+    > svg {
+      font-size: 24px;
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
+
+    > .requestsNumber {
+      position: absolute;
+      top: -14px;
+      right: -8px;
+      width: 18px;
+      padding: 2px;
+      border-radius: 100%;
+      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
   }
 `
