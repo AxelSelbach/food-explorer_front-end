@@ -4,6 +4,7 @@ export const Container = styled.footer`
   width: 100vw;
   height: 10vh;
   padding: 24px 20px;
+  grid-area: footer;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
