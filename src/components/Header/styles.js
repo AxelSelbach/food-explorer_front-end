@@ -2,7 +2,6 @@ import styled from 'styled-components'
 
 export const Container = styled.header`
   width: 100vw;
-  height: 15vh;
   grid-area: header;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
@@ -11,32 +10,36 @@ export const Container = styled.header`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 56px 28px 24px;
+  padding: 28px 24px;
 
-  > .center {
-    width: 50px;
+  > .burguerMenu {
+    width: 32px;
     border: none;
   }
 
-  .center:before,
-  .center:after,
-  .center div {
+  .burguerMenu:before,
+  .burguerMenu:after,
+  .burguerMenu div {
     background: ${({ theme }) => theme.COLORS.COLOR_WHITE};
     content: '';
     display: block;
-    height: 6px;
+    height: 4px;
     border-radius: 3px;
     margin: 7px 0;
     transition: 0.5s;
   }
-  .center:hover:before {
+  .burguerMenu:hover:before {
     transform: translateY(12px) rotate(135deg);
   }
-  .center:hover:after {
+  .burguerMenu:hover:after {
     transform: translateY(-12px) rotate(-135deg);
   }
-  .center:hover div {
+  .burguerMenu:hover div {
     transform: scale(0);
+  }
+
+  > .menu {
+    display: none;
   }
 
   > .centerLogo {
