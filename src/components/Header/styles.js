@@ -1,18 +1,60 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const falling = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+`
+
+const goingUp = keyframes`
+    0% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  50% {
+    opacity: 0.5;
+    transform: translateX(-50%);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+`
 
 export const Container = styled.header`
-  width: 100vw;
+  width: 100dvw;
   grid-area: header;
-
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
   align-items: center;
   padding: 28px 24px;
 
-  > .burguerMenu {
+  > .Content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: inherit;
+  }
+
+  .burguerMenu {
     width: 32px;
     border: none;
   }
@@ -28,21 +70,12 @@ export const Container = styled.header`
     margin: 7px 0;
     transition: 0.5s;
   }
-  .burguerMenu:hover:before {
-    transform: translateY(12px) rotate(135deg);
-  }
-  .burguerMenu:hover:after {
-    transform: translateY(-12px) rotate(-135deg);
-  }
-  .burguerMenu:hover div {
-    transform: scale(0);
-  }
 
-  > .menu {
+  .active {
     display: none;
   }
 
-  > .centerLogo {
+  .centerLogo {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -58,7 +91,7 @@ export const Container = styled.header`
     }
   }
 
-  > button {
+  button {
     background-color: transparent;
     border: none;
     position: relative;
@@ -78,5 +111,83 @@ export const Container = styled.header`
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
     }
+  }
+
+  .menu {
+    width: 100dvw;
+  }
+
+  menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    > p {
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
+  }
+
+  .closeMenu {
+    background-color: transparent;
+    width: 32px;
+    border: none;
+  }
+
+  .closeMenu::before,
+  .closeMenu::after {
+    content: '';
+    background: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    display: block;
+    height: 4px;
+    border-radius: 3px;
+    margin: 7px 0;
+    transition: 0.5s;
+  }
+
+  .closeMenu::before {
+    transform: translateY(2px) rotate(135deg);
+  }
+  .closeMenu::after {
+    transform: translateY(-9px) rotate(-135deg);
+  }
+
+  .opennedMenu {
+    opacity: 0;
+    animation: ${falling} 300ms ease-in forwards;
+    position: absolute;
+    top: 92px;
+    left: 0;
+    height: 80dvh;
+    width: 100dvw;
+    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+  }
+
+  .opennedMenu .active {
+    animation: ${goingUp} 300ms ease-in-out;
+  }
+
+  .opennedMenuContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 36px 28px;
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      width: 100%;
+
+      li {
+        list-style: none;
+      }
+    }
+  }
+
+  .line {
+    width: 100%;
+    height: 1px;
+    background-color: #192227;
   }
 `
