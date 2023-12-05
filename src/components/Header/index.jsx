@@ -14,42 +14,40 @@ export function Header() {
 
   return (
     <Container>
-      <div className={`Content ${menu ? 'active' : ''}`}>
-        <button className="burguerMenu" onClick={openCloseMenu}>
-          <div></div>
-        </button>
+      <div className="Content">
+        <div
+          className={`mobileMenu ${menu ? 'burguer' : ''}`}
+          onClick={openCloseMenu}
+        >
+          <div className="line1"></div>
+          <div className="line2"></div>
+          <div className="line3"></div>
+        </div>
+        <p className={`${menu ? '' : 'active'}`}>Menu</p>
 
-        <div className="centerLogo">
+        <div className={`centerLogo ${menu ? 'active' : ''}`}>
           <img src={headerLogo} alt="Polígono" />
           <h1>Food Explorer</h1>
         </div>
 
-        <button className="receipt">
+        <button className={`receipt ${menu ? 'active' : ''}`}>
           <FaReceipt />
           <div className="requestsNumber">0</div>
         </button>
       </div>
-      <div className={`menu ${menu ? '' : 'active'}`}>
-        <menu>
-          <button className="closeMenu" onClick={openCloseMenu} />
-          <p>Menu</p>
-        </menu>
+      <div className={`menu ${menu ? 'menuOpen' : ''}`}>
         <div className="opennedMenu">
-          <div className="opennedMenuContent">
-            <ul>
-              <li>
-                <Input
-                  type="text"
-                  placeholder="Busque por pratos ou ingredientes"
-                  icon={FaSearch}
-                />
-              </li>
-              <li>
-                <ButtonText title={'Sair'} />
-              </li>
-              <div className="line"></div>
-            </ul>
-          </div>
+          <Input
+            type="text"
+            placeholder="Busque por pratos ou ingredientes"
+            icon={FaSearch}
+          />
+          <ul>
+            <li>
+              <ButtonText title={'Sair'} />
+            </li>
+            <div className="line"></div>
+          </ul>
         </div>
       </div>
     </Container>

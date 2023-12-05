@@ -1,37 +1,22 @@
 import styled, { keyframes } from 'styled-components'
 
-const falling = keyframes`
-  0% {
-    opacity: 0;
-    transform: translateX(-100%);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: translateX(-50%);
-  }
-
-  100% {
+const fadeOut = keyframes`
+  from {
     opacity: 1;
-    transform: translateX(0);
   }
 
+  to {
+    opacity: 0;
+  }
 `
 
-const goingUp = keyframes`
-    0% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-
-  50% {
-    opacity: 0.5;
-    transform: translateX(-50%);
-  }
-
-  100% {
+const fadeIn = keyframes`
+  from {
     opacity: 0;
-    transform: translateX(-100%);
+  }
+
+  to {
+    opacity: 1;
   }
 `
 
@@ -52,26 +37,47 @@ export const Container = styled.header`
     justify-content: space-between;
     align-items: center;
     width: inherit;
+
+    > p {
+      font-family: Roboto;
+      font-size: 18px;
+
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
   }
 
-  .burguerMenu {
+  .mobileMenu {
     width: 32px;
     border: none;
+
+    > div {
+      width: 32px;
+      height: 2px;
+      background: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+      margin: 8px;
+      transition: 0.3s;
+    }
+
+    > svg {
+      font-size: 24px;
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
   }
 
-  .burguerMenu:before,
-  .burguerMenu:after,
-  .burguerMenu div {
-    background: ${({ theme }) => theme.COLORS.COLOR_WHITE};
-    content: '';
-    display: block;
-    height: 4px;
-    border-radius: 3px;
-    margin: 7px 0;
-    transition: 0.5s;
+  .mobileMenu.burguer .line1 {
+    transform: rotate(-135deg) translateY(-14px);
   }
 
-  .active {
+  .mobileMenu.burguer .line2 {
+    scale: 0;
+  }
+
+  .mobileMenu.burguer .line3 {
+    transform: rotate(135deg) translateY(14px);
+  }
+
+  .active,
+  .centerLogo.active {
     display: none;
   }
 
@@ -91,6 +97,7 @@ export const Container = styled.header`
     }
   }
 
+  .receipt,
   button {
     background-color: transparent;
     border: none;
@@ -113,61 +120,33 @@ export const Container = styled.header`
     }
   }
 
+  .centerLogo,
+  .receipt,
+  .Content p {
+    animation: ${fadeIn} 300ms linear;
+  }
+  .centerLogo.active,
+  .receipt.active,
+  .Content p.active {
+    animation: ${fadeOut} 300ms linear;
+  }
+
   .menu {
-    width: 100dvw;
-  }
-
-  menu {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 16px;
-
-    > p {
-      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
-    }
-  }
-
-  .closeMenu {
-    background-color: transparent;
-    width: 32px;
-    border: none;
-  }
-
-  .closeMenu::before,
-  .closeMenu::after {
-    content: '';
-    background: ${({ theme }) => theme.COLORS.COLOR_WHITE};
-    display: block;
-    height: 4px;
-    border-radius: 3px;
-    margin: 7px 0;
-    transition: 0.5s;
-  }
-
-  .closeMenu::before {
-    transform: translateY(2px) rotate(135deg);
-  }
-  .closeMenu::after {
-    transform: translateY(-9px) rotate(-135deg);
-  }
-
-  .opennedMenu {
-    opacity: 0;
-    animation: ${falling} 300ms ease-in forwards;
     position: absolute;
-    top: 92px;
+    top: 94px;
     left: 0;
     height: 80dvh;
     width: 100dvw;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    transform: translateX(-100%);
+    transition: transform 300ms ease-in;
   }
 
-  .opennedMenu .active {
-    animation: ${goingUp} 300ms ease-in-out;
+  .menu.menuOpen {
+    transform: translateX(0);
   }
 
-  .opennedMenuContent {
+  .opennedMenu {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -176,11 +155,11 @@ export const Container = styled.header`
     ul {
       display: flex;
       flex-direction: column;
-      gap: 16px;
       width: 100%;
 
       li {
         list-style: none;
+        margin: 26px 0 10px 0;
       }
     }
   }
