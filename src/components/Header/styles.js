@@ -30,6 +30,7 @@ export const Container = styled.header`
   flex-direction: row;
   align-items: center;
   padding: 28px 24px;
+  z-index: 999;
 
   > .Content {
     display: flex;
