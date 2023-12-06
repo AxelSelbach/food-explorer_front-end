@@ -1,5 +1,6 @@
 import { FaEnvelope, FaKey } from 'react-icons/fa'
 import { FiCoffee } from 'react-icons/fi'
+import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
 import { Container, Form } from './styles'
@@ -33,7 +34,7 @@ export function SignIn() {
           />
         </div>
 
-        <button>Entrar</button>
+        <Button title={'Entrar'} />
         <ButtonText title={'Criar uma conta'} />
       </Form>
     </Container>
