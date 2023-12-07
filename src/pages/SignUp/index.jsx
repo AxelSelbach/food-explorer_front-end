@@ -14,7 +14,7 @@ export function SignUp() {
           <h1>Food Explorer</h1>
         </div>
 
-        <div className="input-wrapper">
+        <div className="inputWrapper">
           <label htmlFor="name">Seu nome</label>
           <Input
             type="text"
@@ -23,7 +23,7 @@ export function SignUp() {
             placeholder="Seu nome da Silva"
           />
         </div>
-        <div className="input-wrapper">
+        <div className="inputWrapper">
           <label htmlFor="email">Email</label>
           <Input
             type="text"
@@ -33,7 +33,7 @@ export function SignUp() {
           />
         </div>
 
-        <div className="input-wrapper">
+        <div className="inputWrapper">
           <label htmlFor="password">Senha</label>
           <Input
             type="text"
