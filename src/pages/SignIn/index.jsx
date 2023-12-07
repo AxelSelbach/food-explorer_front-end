@@ -14,7 +14,7 @@ export function SignIn() {
           <h1>Food Explorer</h1>
         </div>
 
-        <div className="input-wrapper">
+        <div className="inputWrapper">
           <label htmlFor="email">Email</label>
           <Input
             type="text"
@@ -24,7 +24,7 @@ export function SignIn() {
           />
         </div>
 
-        <div className="input-wrapper">
+        <div className="inputWrapper">
           <label htmlFor="password">Senha</label>
           <Input
             type="text"
