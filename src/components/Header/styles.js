@@ -10,7 +10,7 @@ const fadeOut = keyframes`
   }
 `
 
-const fadeIn = keyframes`
+export const fadeIn = keyframes`
   from {
     opacity: 0;
   }
