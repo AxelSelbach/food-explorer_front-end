@@ -9,7 +9,7 @@ export const Container = styled.footer`
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
+  background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 
   > div {
     color: ${({ theme }) => theme.COLORS.DARK_SLATE_GRAY};
