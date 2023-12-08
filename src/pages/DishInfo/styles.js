@@ -1,16 +1,18 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../components/Header/styles'
 
 export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
   display: grid;
-  grid-template-rows: 10dvh 80dvh 10dvh;
+  grid-template-rows: 0.2fr 3fr 0.2fr;
   grid-template-areas:
     'header'
     'content'
     'footer';
 
   grid-area: content;
+  overflow: hidden;
 `
 export const Content = styled.main`
   display: flex;
@@ -22,7 +24,7 @@ export const Content = styled.main`
   font-family: Poppins;
   color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
 
-  padding: 16px 24px;
+  padding: 24px 40px;
 
   .dishDetails {
     display: flex;
@@ -30,7 +32,11 @@ export const Content = styled.main`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 8px;
+    gap: 32px;
+    opacity: 0;
+
+    animation: ${fadeIn} 300ms linear forwards;
+
     width: inherit;
 
     .returnButton {

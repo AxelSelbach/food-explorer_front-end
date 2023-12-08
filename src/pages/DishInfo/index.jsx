@@ -26,9 +26,11 @@ export function DishInfo() {
 
           <div className="ingredientsWrapper">
             <Ingredient title={'Alface'} />
-            <Ingredient title={'Tomate'} />
+            <Ingredient title={'Cebola'} />
+            <Ingredient title={'Pão Naan'} />
+            <Ingredient title={'Pepino'} />
             <Ingredient title={'Rabanete'} />
-            <Ingredient title={'Gergelim'} />
+            <Ingredient title={'Tomate'} />
           </div>
 
           <div className="buttonsWrapper">
