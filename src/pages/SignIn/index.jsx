@@ -45,7 +45,7 @@ export function SignIn() {
         <div className="inputWrapper">
           <label htmlFor="password">Senha</label>
           <Input
-            type="text"
+            type="password"
             icon={FaKey}
             id="password"
             placeholder="Senha de no mínimo 6 caracteres"
