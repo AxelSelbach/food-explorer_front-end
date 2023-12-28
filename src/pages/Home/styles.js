@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-export const Container = styled.main`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -9,8 +9,14 @@ export const Container = styled.main`
     'header'
     'content'
     'footer';
+`
 
+export const Wrapper = styled.main`
   grid-area: content;
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
 
   > section {
     display: flex;
@@ -36,4 +42,10 @@ export const Container = styled.main`
       }
     }
   }
+`
+
+export const Cards = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 `
