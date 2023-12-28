@@ -1,13 +1,14 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100%;
-  height: 300px;
+  min-height: 320px;
 
   border-radius: 8px;
   border-color: #000204;
 
-  padding: 24px;
+  padding: 16px 48px;
 
   position: relative;
 
@@ -28,10 +29,17 @@ export const Content = styled.div`
     right: 16px;
     top: 16px;
     font-size: 24px;
+    background: transparent;
+    border: none;
     color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
   }
 
   > .cardBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
     > img {
       width: clamp(104px, 78.714px + 4.9505vw, 150px);
       height: clamp(104px, 78.714px + 4.9505vw, 150px);
@@ -45,7 +53,7 @@ export const Content = styled.div`
       text-align: center;
     }
 
-    > p {
+    > span {
       font-family: Roboto;
       font-size: 16px;
 
@@ -66,4 +74,8 @@ export const Content = styled.div`
       }
     }
   }
+`
+
+export const IncludeButton = styled(Link)`
+  width: 100%;
 `

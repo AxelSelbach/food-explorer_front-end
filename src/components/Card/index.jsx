@@ -1,10 +1,9 @@
 import { useState } from 'react'
 import { FaChevronRight, FaMinus, FaPlus, FaRegHeart } from 'react-icons/fa'
-import { Link } from 'react-router-dom'
 import { Button } from '../Button'
-import { Container, Content } from './styles'
+import { Container, Content, IncludeButton } from './styles'
 
-export function Card({ picture, name, price }) {
+export function Card({ data }) {
   const [quantity, setQuantity] = useState(1)
 
   function increment() {
@@ -22,12 +21,13 @@ export function Card({ picture, name, price }) {
           <FaRegHeart />
         </button>
         <div className="cardBody">
-          <img src={picture} alt={`Prato de ${name}`} />
+          <img src={data.picture} alt={`Prato de ${data.name}`} />
           <h2>
-            {name}
+            {data.name}
             <FaChevronRight />
           </h2>
-          <p>R$ {price}</p>
+          <p className="description">{data.description}</p>
+          <span>R$ {data.price}</span>
           <div className="quantitySelect">
             <button className="minusBtn" onClick={decrement}>
               <FaMinus />
@@ -38,9 +38,9 @@ export function Card({ picture, name, price }) {
             </button>
           </div>
         </div>
-        <Link to="/">
+        <IncludeButton to="/">
           <Button title={'incluir'} />
-        </Link>
+        </IncludeButton>
       </Content>
     </Container>
   )
