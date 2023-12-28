@@ -1,14 +1,22 @@
 import styled from 'styled-components'
 
-export const Container = styled.section`
+export const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 360px;
+  padding: 16px;
+  gap: 16px;
+
   > h3 {
     font-family: 'Poppins';
     font-weight: 500;
-    font-size: clamp(1.8rem, 0.727rem + 1.489vw, 2.5rem);
-    line-height: 140%;
-
-    margin-bottom: 38px;
+    font-size: 18px;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+  }
+
+  > menu {
+    width: 100%;
+    height: 360px;
   }
 `
