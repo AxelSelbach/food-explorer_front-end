@@ -11,7 +11,7 @@ export function Carousel({ children }) {
     <Swiper
       rewind={true}
       spaceBetween={24}
-      slidesPerView={2}
+      slidesPerView={1}
       pagination={true}
       navigation={true}
       modules={[Navigation]}
