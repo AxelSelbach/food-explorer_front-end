@@ -1,12 +1,14 @@
 import { useState } from 'react'
 import { FaReceipt, FaSearch } from 'react-icons/fa'
 import headerLogo from '../../assets/headerLogo.png'
+import { useAuth } from '../../hooks/auth'
 import { ButtonText } from '../ButtonText'
 import { Input } from '../Input'
 import { Container } from './styles'
 
-export function Header() {
+export function Header({ fetchDishes }) {
   const [menu, setMenu] = useState(false)
+  const { signOut } = useAuth()
 
   function openCloseMenu() {
     setMenu(!menu)
@@ -38,13 +40,14 @@ export function Header() {
       <div className={`menu ${menu ? 'menuOpen' : ''}`}>
         <div className="opennedMenu">
           <Input
+            icon={FaSearch}
             type="text"
             placeholder="Busque por pratos ou ingredientes"
-            icon={FaSearch}
+            onChange={fetchDishes}
           />
           <ul>
             <li>
-              <ButtonText title={'Sair'} />
+              <ButtonText title={'Sair'} onClick={signOut} />
             </li>
             <div className="line"></div>
           </ul>
