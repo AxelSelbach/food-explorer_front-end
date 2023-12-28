@@ -1,22 +1,18 @@
-/* eslint-disable prettier/prettier */
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/navigation'
 import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
-import { register } from 'swiper/element/bundle'
+
 import { Navigation } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-
-register()
 
 export function Carousel({ children }) {
   return (
     <Swiper
       rewind={true}
       spaceBetween={24}
-      slidesPerView={5}
-      pagination={{ clickable: true }}
+      slidesPerView={2}
+      pagination={true}
       navigation={true}
       modules={[Navigation]}
       className="swiper"
@@ -40,9 +36,7 @@ export function Carousel({ children }) {
       }}
     >
       {children.map((card, index) => (
-        <SwiperSlide key={String(index)}>
-          {card}
-        </SwiperSlide>
+        <SwiperSlide key={String(index)}>{card}</SwiperSlide>
       ))}
     </Swiper>
   )

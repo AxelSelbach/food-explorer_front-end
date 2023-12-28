@@ -1,0 +1,9 @@
+.swiper-button-prev,
+.swiper-button-next {
+  color: ${({ theme }) => theme.COLORS.LIGHT_SKY_BLUE};
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
