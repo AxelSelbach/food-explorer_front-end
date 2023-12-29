@@ -3,7 +3,6 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  width: 360px;
   padding: 16px;
   gap: 16px;
 
@@ -11,6 +10,7 @@ export const Container = styled.div`
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 18px;
+    margin-top: 24px;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
   }
