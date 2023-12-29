@@ -32,7 +32,6 @@ export function Card({ data }) {
               <FaChevronRight />
             </h2>
           </DishLink>
-          <p className="description">{data.description}</p>
           <span>
             {data.price.toLocaleString('pt-BR', {
               style: 'currency',
