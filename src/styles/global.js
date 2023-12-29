@@ -9,6 +9,12 @@ export default createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    display: grid;
+    grid-template-rows: 10dvh 80dvh 10dvh;
+    grid-template-areas:
+    'header'
+    'content'
+    'footer';
   }
 
   a {

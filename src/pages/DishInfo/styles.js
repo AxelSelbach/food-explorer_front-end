@@ -4,13 +4,6 @@ import { fadeIn } from '../../components/Header/styles'
 export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
-  display: grid;
-  grid-template-rows: 10dvh 80dvh 10dvh;
-  grid-template-areas:
-    'header'
-    'content'
-    'footer';
-
   grid-area: content;
 `
 export const Content = styled.main`

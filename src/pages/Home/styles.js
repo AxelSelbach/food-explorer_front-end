@@ -1,14 +1,8 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 10dvh 80dvh 10dvh;
-  grid-template-areas:
-    'header'
-    'content'
-    'footer';
+  width: 100dvw;
+  height: 100dvh;
 `
 
 export const Wrapper = styled.main`
