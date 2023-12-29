@@ -1,7 +1,8 @@
+/* eslint-disable prettier/prettier */
 import { useState } from 'react'
 import { FaChevronRight, FaMinus, FaPlus, FaRegHeart } from 'react-icons/fa'
 import { Button } from '../Button'
-import { Container, Content, IncludeButton } from './styles'
+import { Container, Content, DishLink } from './styles'
 
 export function Card({ data }) {
   const [quantity, setQuantity] = useState(1)
@@ -21,13 +22,23 @@ export function Card({ data }) {
           <FaRegHeart />
         </button>
         <div className="cardBody">
-          <img src={data.picture} alt={`Prato de ${data.name}`} />
-          <h2>
-            {data.name}
-            <FaChevronRight />
-          </h2>
+          <img 
+            src={data.picture}
+            alt={`Prato de ${data.name}`} 
+          />
+          <DishLink to={`/details/${data.id}`}>
+            <h2>
+              {data.name}
+              <FaChevronRight />
+            </h2>
+          </DishLink>
           <p className="description">{data.description}</p>
-          <span>R$ {data.price}</span>
+          <span>
+            {data.price.toLocaleString('pt-BR', {
+              style: 'currency',
+              currency: 'BRL',
+            })}
+          </span>
           <div className="quantitySelect">
             <button className="minusBtn" onClick={decrement}>
               <FaMinus />
@@ -38,9 +49,9 @@ export function Card({ data }) {
             </button>
           </div>
         </div>
-        <IncludeButton to="/">
+        <DishLink to="/">
           <Button title={'incluir'} />
-        </IncludeButton>
+        </DishLink>
       </Content>
     </Container>
   )

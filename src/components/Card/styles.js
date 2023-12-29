@@ -49,7 +49,7 @@ export const Content = styled.div`
     > h2 {
       font-family: Poppins;
       font-size: 14px;
-
+      align-self: center;
       text-align: center;
     }
 
@@ -76,6 +76,11 @@ export const Content = styled.div`
   }
 `
 
-export const IncludeButton = styled(Link)`
+export const DishLink = styled(Link)`
   width: 100%;
+  color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+
+  > h2 {
+    text-decoration: none;
+  }
 `
