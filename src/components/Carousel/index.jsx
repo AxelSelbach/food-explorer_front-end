@@ -17,19 +17,24 @@ export function Carousel({ children }) {
       modules={[Navigation]}
       className="swiper"
       breakpoints={{
-        240: {
+        360: {
           slidesPerView: 1,
+          spaceBetween: 24,
+        },
+        456: {
+          slidesPerView: 2,
           spaceBetween: 24,
         },
         576: {
           slidesPerView: 3,
           spaceBetween: 24,
         },
+
         768: {
           slidesPerView: 4,
           spaceBetween: 24,
         },
-        1200: {
+        1420: {
           slidesPerView: 5,
           spaceBetween: 24,
         },
