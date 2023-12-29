@@ -13,6 +13,7 @@ export default {
     LIGHT_SKY_BLUE: '#82F3FF',
     CYAN_ORIENT: '#065E7C',
     LIGHT_GRAY: '#E1E1E6',
+    PEARL_GRAY: '#C4C4CC',
     DARK_SLATE_GRAY: '#76797B',
     LIGHT_SLATE_GRAY: '#7C7C8A',
     COLOR_WHITE: '#FFF',
