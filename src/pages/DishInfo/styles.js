@@ -5,21 +5,21 @@ export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
   display: grid;
-  grid-template-rows: 0.2fr 3fr 0.2fr;
+  grid-template-rows: 10dvh 80dvh 10dvh;
   grid-template-areas:
     'header'
     'content'
     'footer';
 
   grid-area: content;
-  overflow: hidden;
 `
 export const Content = styled.main`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  min-width: 320px;
+  width: 100%;
   flex-wrap: wrap;
+  overflow: auto;
 
   font-family: Poppins;
   color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
@@ -62,7 +62,7 @@ export const Content = styled.main`
       flex-wrap: wrap;
       justify-content: center;
       align-items: center;
-      gap: 24px;
+      gap: 16px;
     }
 
     > .buttonsWrapper {
