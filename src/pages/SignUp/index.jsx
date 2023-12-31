@@ -77,7 +77,7 @@ export function SignUp() {
 
         <Button
           title={'Criar conta'}
-          backgroundColor={'#750310'}
+          backgroundcolor={'#750310'}
           onClick={handleSignUp}
         />
         <Link to="/">

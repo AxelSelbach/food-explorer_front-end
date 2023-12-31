@@ -42,7 +42,7 @@ export function DishInfo() {
     }
 
     getDish()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   return (
@@ -51,54 +51,54 @@ export function DishInfo() {
       {
         data &&
         <Content>
-        <div className="dishDetails">
-          <div className="returnButton">
-            <Link to='/'>
-              <ButtonText icon={FaAngleLeft} title={'Voltar'} />
-            </Link>
-          </div>
-          <img
-            src='https://unsplash.com/pt-br/fotografias/uma-pessoa-cortando-um-sanduiche-em-uma-tabua-de-corte-0Ci47m3L-I8'
-            alt={`Imagem da refeição, sobremesa ou bebida ${data.name}`}
-          />
-          <h2>{data.name}</h2>
-          <p>{data.description}</p>
+          <div className="dishDetails">
+            <div className="returnButton">
+              <Link to='/'>
+                <ButtonText icon={FaAngleLeft} title={'Voltar'} />
+              </Link>
+            </div>
+            <img
+              src='https://unsplash.com/pt-br/fotografias/uma-pessoa-cortando-um-sanduiche-em-uma-tabua-de-corte-0Ci47m3L-I8'
+              alt={`Imagem da refeição, sobremesa ou bebida ${data.name}`}
+            />
+            <h2>{data.name}</h2>
+            <p>{data.description}</p>
 
-          <div className="ingredientsWrapper">
-            {
-              data.ingredients.map(ingredient => (
-                <Ingredient
-                  key={String(ingredient.id)}
-                  title={ingredient.name}
-                />
-              ))
-            }
-          </div>
+            <div className="ingredientsWrapper">
+              {
+                data.ingredients.map(ingredient => (
+                  <Ingredient
+                    key={String(ingredient.id)}
+                    title={ingredient.name}
+                  />
+                ))
+              }
+            </div>
 
-          <div className="buttonsWrapper">
-            <button className="minusBtn" onClick={decrement}>
-              <FaMinus />
-            </button>
-            <span>{amount}</span>
-            <button className="plusBtn" onClick={increment}>
-              <FaPlus />
-            </button>
+            <div className="buttonsWrapper">
+              <button className="minusBtn" onClick={decrement}>
+                <FaMinus />
+              </button>
+              <span>{amount}</span>
+              <button className="plusBtn" onClick={increment}>
+                <FaPlus />
+              </button>
 
-            <Button
-              icon={FaReceipt}
-              backgroundColor={'#750310'}
-              title={`pedir ∙ ${data.price.toLocaleString(
-                'pt-BR', {
+              <Button
+                icon={FaReceipt}
+                backgroundcolor={'#750310'}
+                title={`pedir ∙ ${data.price.toLocaleString(
+                  'pt-BR', {
                   style: 'currency',
                   currency: 'BRL',
                 }
-              )}`} 
-            />
+                )}`}
+              />
+            </div>
           </div>
-        </div>
-      </Content>
+        </Content>
       }
-      
+
       <Footer />
     </Container>
   )

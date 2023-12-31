@@ -1,8 +1,8 @@
 /* eslint-disable prettier/prettier */
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
 import { FaEnvelope, FaKey } from 'react-icons/fa'
 import { FiCoffee } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
 import { Input } from '../../components/Input'
@@ -55,7 +55,7 @@ export function SignIn() {
 
         <Button
           title={'Entrar'}
-          backgroundColor={'#750310'}
+          backgroundcolor={'#750310'}
           onClick={handleSignIn}
         />
         <Link to="/register">

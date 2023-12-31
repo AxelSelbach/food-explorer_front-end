@@ -22,9 +22,9 @@ export function Card({ data }) {
           <FaRegHeart />
         </button>
         <div className="cardBody">
-          <img 
+          <img
             src={data.picture}
-            alt={`Prato de ${data.name}`} 
+            alt={`Prato de ${data.name}`}
           />
           <DishLink to={`/details/${data.id}`}>
             <h2>
@@ -49,7 +49,10 @@ export function Card({ data }) {
           </div>
         </div>
         <DishLink to="/">
-          <Button title={'incluir'} backgroundColor={'#750310'} />
+          <Button
+            title={'incluir'}
+            backgroundcolor={'#750310'}
+          />
         </DishLink>
       </Content>
     </Container>
