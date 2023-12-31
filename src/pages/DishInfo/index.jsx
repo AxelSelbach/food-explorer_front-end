@@ -1,5 +1,6 @@
 /* eslint-disable prettier/prettier */
-import { useState, useEffect } from 'react'
+import { useEffect, useState } from 'react'
+import { FaAngleLeft, FaMinus, FaPlus, FaReceipt } from 'react-icons/fa'
 import { Link, useParams } from 'react-router-dom'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
@@ -8,7 +9,6 @@ import { Header } from '../../components/Header'
 import { Ingredient } from '../../components/Ingredient'
 import { api } from '../../services/api'
 import { Container, Content } from './styles'
-import { FaAngleLeft, FaMinus, FaPlus, FaReceipt } from 'react-icons/fa'
 
 export function DishInfo() {
   const [data, setData] = useState(null)
@@ -84,10 +84,16 @@ export function DishInfo() {
               <FaPlus />
             </button>
 
-            <Button icon={FaReceipt} title={`pedir ∙ ${data.price.toLocaleString('pt-BR', {
-              style: 'currency',
-              currency: 'BRL',
-            })}`} />
+            <Button
+              icon={FaReceipt}
+              backgroundColor={'#750310'}
+              title={`pedir ∙ ${data.price.toLocaleString(
+                'pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                }
+              )}`} 
+            />
           </div>
         </div>
       </Content>

@@ -49,7 +49,7 @@ export function Card({ data }) {
           </div>
         </div>
         <DishLink to="/">
-          <Button title={'incluir'} />
+          <Button title={'incluir'} backgroundColor={'#750310'} />
         </DishLink>
       </Content>
     </Container>

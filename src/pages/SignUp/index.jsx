@@ -75,7 +75,11 @@ export function SignUp() {
           />
         </div>
 
-        <Button title={'Criar conta'} onClick={handleSignUp} />
+        <Button
+          title={'Criar conta'}
+          backgroundColor={'#750310'}
+          onClick={handleSignUp}
+        />
         <Link to="/">
           <ButtonText title={'Já tenho uma conta'} />
         </Link>

@@ -53,7 +53,11 @@ export function SignIn() {
           />
         </div>
 
-        <Button title={'Entrar'} onClick={handleSignIn}/>
+        <Button
+          title={'Entrar'}
+          backgroundColor={'#750310'}
+          onClick={handleSignIn}
+        />
         <Link to="/register">
           <ButtonText title={'Criar uma conta'} />
         </Link>
