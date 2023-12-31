@@ -1,11 +1,11 @@
 import { Container } from './styles'
 
-export function Button({ title, icon: Icon, backgroundColor, ...rest }) {
+export function Button({ title, icon: Icon, backgroundcolor, ...rest }) {
   return (
     // eslint-disable-next-line prettier/prettier
     <Container
       type="button"
-      backgroundColor={backgroundColor}
+      $backgroundcolor={backgroundcolor}
       {...rest}
     >
       {Icon && <Icon size={20} />}
