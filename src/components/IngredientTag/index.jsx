@@ -2,7 +2,7 @@ import { FaPlus, FaTimes } from 'react-icons/fa'
 
 import { Container } from './styles'
 
-export function NoteItem({ isNew, value, onClick, ...rest }) {
+export function IngredientTag({ isNew, value, onClick, ...rest }) {
   return (
     <Container isnew={isNew ? 1 : 0}>
       <input type="text" value={value} readOnly={!isNew} {...rest} />
