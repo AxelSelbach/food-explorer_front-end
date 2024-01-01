@@ -14,7 +14,7 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/details/:id" element={<DishInfo />} />
       {isAdmin && <Route path="/add" element={<AddDish />} />}
-      {isAdmin && <Route path="/edit" element={<EditDish />} />}
+      {isAdmin && <Route path="/edit/:id" element={<EditDish />} />}
     </Routes>
   )
 }
