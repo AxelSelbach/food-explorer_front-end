@@ -40,6 +40,7 @@ export const Content = styled.main`
     > img {
       height: clamp(16.25rem, 23.718vw + 10.913rem, 39.375rem);
       width: clamp(16.25rem, 23.718vw + 10.913rem, 39.375rem);
+      border-radius: 999px;
     }
 
     > h2 {

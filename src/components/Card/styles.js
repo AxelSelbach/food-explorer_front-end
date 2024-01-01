@@ -44,6 +44,7 @@ export const Content = styled.div`
       width: clamp(104px, 78.714px + 4.9505vw, 150px);
       height: clamp(104px, 78.714px + 4.9505vw, 150px);
       object-fit: cover;
+      border-radius: 999px;
     }
 
     > h2 {
