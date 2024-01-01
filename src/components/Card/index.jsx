@@ -32,7 +32,7 @@ export function Card({ data }) {
 
         {
           isAdmin && 
-          <EditDish to={`/details/${data.id}`}>
+          <EditDish to={`/edit/${data.id}`}>
             <button>
               <FaPencilAlt />
             </button>
