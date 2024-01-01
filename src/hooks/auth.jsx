@@ -37,6 +37,8 @@ export function AuthProvider({ children }) {
     localStorage.removeItem('@foodexplorer:token')
 
     setData({})
+
+    toast.success('Até logo!')
   }
 
   return (
