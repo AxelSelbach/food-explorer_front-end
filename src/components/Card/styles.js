@@ -1,5 +1,5 @@
-import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 100%;
@@ -82,5 +82,19 @@ export const DishLink = styled(Link)`
 
   > h2 {
     text-decoration: none;
+  }
+`
+
+export const EditDish = styled(Link)`
+  width: auto;
+  position: relative;
+  > button {
+    position: absolute;
+    left: 60px;
+    top: -5px;
+    font-size: 24px;
+    background: transparent;
+    border: none;
+    color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
   }
 `

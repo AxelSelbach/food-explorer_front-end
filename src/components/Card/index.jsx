@@ -1,11 +1,16 @@
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable prettier/prettier */
 import { useState } from 'react'
-import { FaChevronRight, FaMinus, FaPlus, FaRegHeart } from 'react-icons/fa'
+import { FaChevronRight, FaMinus, FaPlus, FaRegHeart, FaPencilAlt } from 'react-icons/fa'
+import { useAuth } from '../../hooks/auth'
 import { Button } from '../Button'
-import { Container, Content, DishLink } from './styles'
+import { Container, Content, EditDish, DishLink } from './styles'
 
 export function Card({ data }) {
   const [quantity, setQuantity] = useState(1)
+
+  const { user } = useAuth()
+  const isAdmin = user && user.isAdmin ? true : false
 
   function increment() {
     if (quantity >= 0) setQuantity(quantity + 1)
@@ -18,9 +23,21 @@ export function Card({ data }) {
   return (
     <Container>
       <Content>
-        <button className="favoriteButton">
-          <FaRegHeart />
-        </button>
+        {
+          !isAdmin && 
+          <button className="favoriteButton">
+            <FaRegHeart />
+          </button>
+        }
+
+        {
+          isAdmin && 
+          <EditDish to={`/details/${data.id}`}>
+            <button>
+              <FaPencilAlt />
+            </button>
+          </EditDish>
+        }
         <div className="cardBody">
           <img
             src={data.picture}
@@ -38,7 +55,9 @@ export function Card({ data }) {
               currency: 'BRL',
             })}
           </span>
-          <div className="quantitySelect">
+          {
+            !isAdmin &&
+            <div className="quantitySelect">
             <button className="minusBtn" onClick={decrement}>
               <FaMinus />
             </button>
@@ -47,13 +66,18 @@ export function Card({ data }) {
               <FaPlus />
             </button>
           </div>
+          }
+
         </div>
-        <DishLink to="/">
-          <Button
-            title={'incluir'}
-            backgroundcolor={'#750310'}
-          />
+        {
+          !isAdmin && 
+          <DishLink to="/">
+            <Button
+              title={'incluir'}
+              backgroundcolor={'#750310'}
+            />
         </DishLink>
+        }
       </Content>
     </Container>
   )
