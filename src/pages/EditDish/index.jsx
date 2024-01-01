@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaAngleLeft, FaUpload } from 'react-icons/fa'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
@@ -11,13 +11,15 @@ import { Select } from '../../components/Select'
 import { api, imagesAPI } from '../../services/api'
 import {
   BackLink,
+  ButtonsWrapper,
   Container,
   Content,
   IngredientsWrapper,
   InputFile,
+  InputWrapper,
 } from './styles'
 
-export function AddDish() {
+export function EditDish() {
   const [picture, setPicture] = useState('')
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
@@ -27,7 +29,6 @@ export function AddDish() {
   const [newIngredient, setNewIngredient] = useState('')
 
   const params = useParams()
-  const navigate = useNavigate()
 
   function handleRemoveIngredient(deleted) {
     setIngredients((prevState) =>
@@ -35,15 +36,18 @@ export function AddDish() {
     )
   }
 
-  function handleAddLink() {
+  async function handleDelete() {
+    await api.delete(`/dishes/${params.id}`)
+  }
+
+  function handleAddIngredient(newIngredient) {
     if (ingredients.includes(newIngredient)) {
       toast.error('Ingrediente duplicado!')
       return
     }
 
-    if (ingredients.length === 0 || newIngredient === '') {
-      toast.error('Ingrediente Vazio / Inexistente')
-      return
+    if (newIngredient.value === '') {
+      toast.error('Ingrediente vazio!')
     }
 
     setIngredients((prevState) => [...prevState, newIngredient])
@@ -55,9 +59,9 @@ export function AddDish() {
       !picture ||
       !name ||
       !category ||
-      !ingredients ||
       !price ||
-      !description
+      !description ||
+      ingredients.length === 0
     ) {
       toast.info('Para fazer o envio, é necessário preencher todos os campos!')
       return
@@ -66,24 +70,27 @@ export function AddDish() {
     const formData = new FormData()
     formData.append('photo', picture)
     try {
-      toast.promise(
+      await toast.promise(
         imagesAPI.post('', formData).then(
           (res) =>
-            api.post('/dishes', {
-              picture: res.data.url,
-              name,
-              category,
-              ingredients,
-              price,
+            api.put(`/dishes/${params.id}`, {
               description,
+              category,
+              price,
+              name,
+              ingredients,
+              picture: res.data.url,
             }),
-          toast.success('Prato editado com sucesso!'),
-          navigate('-1'),
+          {
+            pending: 'Enviando dados...',
+            success: 'Prato editado com sucesso!',
+            error: 'Erro ao atualizar prato!',
+          },
         ),
       )
     } catch (error) {
       if (error.response) {
-        return toast.error('Erro ao editar prato, tente novamente mais tarde')
+        toast.error('Erro ao editar prato, tente novamente mais tarde')
       }
     }
   }
@@ -112,7 +119,7 @@ export function AddDish() {
     }
 
     fetchDish()
-  }, [])
+  }, [params.id])
 
   return (
     <Container>
@@ -126,8 +133,8 @@ export function AddDish() {
           />
         </BackLink>
 
-        <form>
-          <h1>Edtiar prato</h1>
+        <form onSubmit={(e) => e.preventDefault()}>
+          <h1>Editar prato</h1>
           <fieldset>
             <label htmlFor="picture">Imagem do prato</label>
             <InputFile>
@@ -135,18 +142,27 @@ export function AddDish() {
               <label htmlFor="picture">
                 Selecione uma imagem para alterá-la
               </label>
-              <input className="inputFile" type="file" id="picture" />
+              <input
+                className="inputFile"
+                onChange={(e) => {
+                  setPicture(e.target.files[0])
+                }}
+                type="file"
+                id="picture"
+              />
             </InputFile>
 
-            <label htmlFor="name">Nome</label>
-            <input
-              placeholder={`${name}`}
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
+            <InputWrapper>
+              <label htmlFor="name">Nome</label>
+              <input
+                placeholder={`${name}`}
+                type="text"
+                id="name"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                required
+              />
+            </InputWrapper>
 
             <Select
               title={'Categoria'}
@@ -160,7 +176,7 @@ export function AddDish() {
               {ingredients.map((ingredient, index) => (
                 // eslint-disable-next-line prettier/prettier
                 <IngredientTag
-                  key={String(index)}
+                  key={index}
                   value={ingredient}
                   onClick={() => handleRemoveIngredient(ingredient)}
                 />
@@ -169,36 +185,57 @@ export function AddDish() {
                 placeholder="Adicionar"
                 isNew
                 id="ingredients"
-                value={newIngredient}
                 // eslint-disable-next-line prettier/prettier
                 onChange={e => setNewIngredient(e.target.value)}
-                onClick={handleAddLink}
+                onClick={() => {
+                  handleAddIngredient(newIngredient)
+                }}
               />
             </IngredientsWrapper>
-            <label htmlFor="price">Preço</label>
-            <input
-              type="number"
-              id="price"
-              placeholder={`${price}`}
-              onChange={(e) => setPrice(e.target.value)}
-              required
-            />
+            <InputWrapper>
+              <label htmlFor="price">Preço</label>
+              <input
+                type="number"
+                id="price"
+                value={`${price.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}`}
+                placeholder={`${price.toLocaleString('pt-BR', {
+                  style: 'currency',
+                  currency: 'BRL',
+                })}`}
+                onChange={(e) => setPrice(e.target.value)}
+                required
+              />
+            </InputWrapper>
           </fieldset>
-          <label htmlFor="description">Descrição</label>
-          <textarea
-            id="description"
-            placeholder={`${description}`}
-            cols="30"
-            rows="10"
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-          <Button
-            title="Editar Prato"
-            type={'submit'}
-            backgroundcolor={'#AB4D55'}
-            onClick={handleAddDish}
-          />
+          <InputWrapper>
+            <label htmlFor="description">Descrição</label>
+            <textarea
+              id="description"
+              placeholder={`${description}`}
+              value={description}
+              cols="30"
+              rows="10"
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            ></textarea>
+          </InputWrapper>
+
+          <ButtonsWrapper>
+            <Button
+              title="Excluir prato"
+              backgroundcolor={'#0D161B'}
+              onClick={handleDelete}
+            />
+
+            <Button
+              title="Editar Prato"
+              backgroundcolor={'#AB4D55'}
+              onClick={handleEditDish}
+            />
+          </ButtonsWrapper>
         </form>
       </Content>
       <Footer />
