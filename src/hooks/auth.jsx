@@ -1,4 +1,5 @@
 import { createContext, useContext, useState } from 'react'
+import { toast } from 'react-toastify'
 import { api } from '../services/api'
 
 export const AuthContext = createContext({})
@@ -16,17 +17,17 @@ export function AuthProvider({ children }) {
       localStorage.setItem('@foodexplorer:user', JSON.stringify(user))
       localStorage.setItem('@foodexplorer:token', token)
 
-      // eslint-disable-next-line dot-notation
-      api.defaults.headers.common['Authorization'] = `Bearer ${token}`
-      setData({ token, user })
+      api.defaults.headers.common.Authorization = `Bearer ${token}`
+
+      setData({ user, token })
 
       setLoading(false)
     } catch (error) {
       setLoading(false)
       if (error.response) {
-        alert(error.response.data.message)
+        toast(error.response.data.message)
       } else {
-        alert('Não foi possível entrar')
+        toast.error('Não foi possível entrar')
       }
     }
   }
