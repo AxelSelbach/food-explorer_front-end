@@ -110,7 +110,7 @@ export function DishInfo() {
             </div>
             {
               isAdmin && 
-                <Edit to='/edit'>
+                <Edit to={`/edit/${data.id}`}>
                   <Button
                     backgroundcolor={'#750310'}
                     title={'Editar prato'}
