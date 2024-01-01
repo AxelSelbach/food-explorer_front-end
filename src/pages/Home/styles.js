@@ -23,13 +23,13 @@ export const Wrapper = styled.main`
     > aside {
       margin-top: 10px;
 
-      h2 {
+      > h2 {
         font-family: Poppins;
         font-size: 16px;
         font-weight: 600;
       }
 
-      p {
+      > p {
         font-family: Poppins;
         font-size: 12px;
         font-weight: 400;
