@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled, { keyframes } from 'styled-components'
 
 const fadeOut = keyframes`
@@ -22,26 +23,23 @@ export const fadeIn = keyframes`
 
 export const Container = styled.header`
   width: 100dvw;
+  display: grid;
   grid-area: header;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+`
 
+export const Wrapper = styled.div`
   position: relative;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 28px 24px;
   z-index: 999;
 
   > .Content {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: inherit;
-
     > p {
       font-family: Roboto;
       font-size: 18px;
+      align-self: center;
 
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
     }
@@ -84,8 +82,10 @@ export const Container = styled.header`
 
   .centerLogo {
     display: flex;
+    justify-content: center;
+    width: 90%;
     align-items: center;
-    gap: 8px;
+    gap: 16px;
 
     > h1 {
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
@@ -94,7 +94,15 @@ export const Container = styled.header`
       font-size: 21px;
       font-style: normal;
       font-weight: 700;
-      line-height: normal;
+    }
+
+    .adminSpan {
+      color: ${({ theme }) => theme.COLORS.LIGHT_SKY_BLUE};
+
+      font-family: Roboto;
+      font-size: small;
+      font-weight: 400;
+      line-height: 160%;
     }
   }
 
@@ -111,7 +119,7 @@ export const Container = styled.header`
 
     > .requestsNumber {
       position: absolute;
-      top: -14px;
+      top: -8px;
       right: -8px;
       width: 18px;
       padding: 2px;
@@ -136,8 +144,8 @@ export const Container = styled.header`
     position: absolute;
     top: 94px;
     left: 0;
-    height: 80dvh;
-    width: 100dvw;
+    height: 100dvh;
+    width: 100%;
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
     transform: translateX(-100%);
     transition: transform 300ms ease-in;
@@ -161,6 +169,8 @@ export const Container = styled.header`
       li {
         list-style: none;
         margin: 26px 0 10px 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid gray;
       }
     }
   }
@@ -171,3 +181,4 @@ export const Container = styled.header`
     background-color: #192227;
   }
 `
+export const Add = styled(Link)``
