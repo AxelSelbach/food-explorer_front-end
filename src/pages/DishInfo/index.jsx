@@ -63,7 +63,7 @@ export function DishInfo() {
               </Link>
             </div>
             <img
-              src='https://unsplash.com/pt-br/fotografias/uma-pessoa-cortando-um-sanduiche-em-uma-tabua-de-corte-0Ci47m3L-I8'
+              src={data.picture}
               alt={`Imagem da refeição, sobremesa ou bebida ${data.name}`}
             />
             <h2>{data.name}</h2>
