@@ -27,6 +27,26 @@ export const Content = styled.div`
     font-size: 32px;
   }
 
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    fieldset {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      border: none;
+    }
+  }
+`
+
+export const InputWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   input,
   textarea {
     padding: 12px 14px;
@@ -49,20 +69,10 @@ export const Content = styled.div`
   }
 
   label {
+    font-family: Roboto;
+    font-size: 16px;
+
     color: ${({ theme }) => theme.COLORS.PEARL_GRAY};
-  }
-
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    fieldset {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      border: none;
-    }
   }
 `
 
@@ -91,6 +101,14 @@ export const IngredientsWrapper = styled.div`
   border: none;
   border-radius: 8px;
 `
+
+export const ButtonsWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+`
+
 export const BackLink = styled(Link)`
   width: fit-content;
   color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
