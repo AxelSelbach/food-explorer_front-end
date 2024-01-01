@@ -11,7 +11,6 @@ export function IngredientTag({ isNew, value, onClick, ...rest }) {
         value={value}
         readOnly={!isNew}
         {...rest}
-        required 
       />
 
       <button
