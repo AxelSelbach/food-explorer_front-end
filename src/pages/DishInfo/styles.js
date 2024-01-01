@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { fadeIn } from '../../components/Header/styles'
+import { Link } from 'react-router-dom'
 
 export const Container = styled.div`
   width: 100dvw;
@@ -78,4 +79,8 @@ export const Content = styled.main`
       }
     }
   }
+`
+
+export const Edit = styled(Link)`
+  width: 100%;
 `

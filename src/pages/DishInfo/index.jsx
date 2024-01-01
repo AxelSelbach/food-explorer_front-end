@@ -1,3 +1,4 @@
+/* eslint-disable no-unneeded-ternary */
 /* eslint-disable prettier/prettier */
 import { useEffect, useState } from 'react'
 import { FaAngleLeft, FaMinus, FaPlus, FaReceipt } from 'react-icons/fa'
@@ -7,12 +8,16 @@ import { ButtonText } from '../../components/ButtonText'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Ingredient } from '../../components/Ingredient'
+import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
-import { Container, Content } from './styles'
+import { Container, Content, Edit } from './styles'
 
 export function DishInfo() {
   const [data, setData] = useState(null)
   const [amount, setAmount] = useState(1)
+  const { user } = useAuth()
+
+  const isAdmin = user && user.isAdmin ? true : false
 
   const params = useParams()
 
@@ -76,29 +81,46 @@ export function DishInfo() {
             </div>
 
             <div className="buttonsWrapper">
-              <button className="minusBtn" onClick={decrement}>
-                <FaMinus />
-              </button>
-              <span>{amount}</span>
-              <button className="plusBtn" onClick={increment}>
-                <FaPlus />
-              </button>
+              {
+                !isAdmin &&
+                <>
+                  <button className="minusBtn" onClick={decrement}>
+                    <FaMinus />
+                  </button>
+                  <span>{amount}</span>
+                  <button className="plusBtn" onClick={increment}>
+                    <FaPlus />
+                  </button>
+                </>
+              }
 
-              <Button
-                icon={FaReceipt}
-                backgroundcolor={'#750310'}
-                title={`pedir ∙ ${data.price.toLocaleString(
-                  'pt-BR', {
-                  style: 'currency',
-                  currency: 'BRL',
-                }
-                )}`}
-              />
+              {
+                !isAdmin && 
+                <Button
+                  icon={FaReceipt}
+                  backgroundcolor={'#750310'}
+                  title={`pedir ∙ ${data.price.toLocaleString(
+                    'pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  }
+                  )}`}
+                />
+              }
             </div>
+            {
+              isAdmin && 
+                <Edit to='/edit'>
+                  <Button
+                    backgroundcolor={'#750310'}
+                    title={'Editar prato'}
+                  />
+                </Edit>
+                
+            }
           </div>
         </Content>
       }
-
       <Footer />
     </Container>
   )
