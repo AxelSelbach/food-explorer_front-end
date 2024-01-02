@@ -24,18 +24,30 @@ export const fadeIn = keyframes`
 export const Container = styled.header`
   width: 100dvw;
   display: grid;
+  align-items: center;
+  align-content: center;
   grid-area: header;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
 `
 
 export const Wrapper = styled.div`
+  width: 100%;
   position: relative;
   padding: 28px 24px;
   z-index: 999;
 
-  > .Content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+
+  .Content {
+    max-width: 1280px;
+    width: 100%;
+
     display: flex;
     flex-direction: row;
+
     > p {
       font-family: Roboto;
       font-size: 18px;
@@ -43,10 +55,15 @@ export const Wrapper = styled.div`
 
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
     }
+
+    @media (min-width: 768px) {
+      gap: 32px;
+      justify-content: center;
+    }
   }
 
   .mobileMenu {
-    width: 32px;
+    width: auto;
     border: none;
 
     > div {
@@ -60,6 +77,10 @@ export const Wrapper = styled.div`
     > svg {
       font-size: 24px;
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
+
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 
@@ -81,11 +102,12 @@ export const Wrapper = styled.div`
   }
 
   .centerLogo {
+    width: 100%;
     display: flex;
     justify-content: center;
-    width: 90%;
     align-items: center;
     gap: 16px;
+    position: relative;
 
     > h1 {
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
@@ -103,11 +125,42 @@ export const Wrapper = styled.div`
       font-size: small;
       font-weight: 400;
       line-height: 160%;
+
+      @media (min-width: 768px) {
+        position: absolute;
+        top: 48px;
+        right: 16px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      width: fit-content;
     }
   }
 
-  .receipt,
-  button {
+  nav {
+    width: 100%;
+    display: none;
+
+    .requests,
+    .newDish {
+      width: max-content;
+    }
+
+    .logout {
+      background-color: transparent;
+      border: none;
+      font-size: 20px;
+      color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
+
+    @media (min-width: 768px) {
+      display: flex;
+      gap: 32px;
+    }
+  }
+
+  .receipt {
     background-color: transparent;
     border: none;
     position: relative;
@@ -126,6 +179,10 @@ export const Wrapper = styled.div`
       border-radius: 100%;
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_BUTTON};
       color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    }
+
+    @media (min-width: 768px) {
+      display: none;
     }
   }
 

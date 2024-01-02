@@ -1,8 +1,9 @@
 /* eslint-disable no-unneeded-ternary */
 import { useState } from 'react'
-import { FaReceipt, FaSearch } from 'react-icons/fa'
+import { FaReceipt, FaSearch, FaSignOutAlt } from 'react-icons/fa'
 import headerLogo from '../../assets/headerLogo.png'
 import { useAuth } from '../../hooks/auth'
+import { Button } from '../Button'
 import { ButtonText } from '../ButtonText'
 import { Input } from '../Input'
 import { Add, Container, Wrapper } from './styles'
@@ -41,6 +42,38 @@ export function Header({ fetchDishes }) {
             }
           </div>
 
+          <nav>
+            <Input
+              className={'search'}
+              icon={FaSearch}
+              type="text"
+              placeholder="Busque por pratos ou ingredientes"
+              onChange={fetchDishes}
+            />
+            {!isAdmin && (
+              <Button
+                className={'requests'}
+                icon={FaReceipt}
+                backgroundcolor={'#750310'}
+                title={'Pedidos(0)'}
+              />
+            )}
+            {isAdmin && (
+              <Add to="/add">
+                <Button
+                  // eslint-disable-next-line prettier/prettier
+                  className={'newDish'}
+                  backgroundcolor={'#750310'}
+                  title={'Novo Prato'}
+                />
+              </Add>
+            )}
+
+            <button className="logout" onClick={signOut}>
+              <FaSignOutAlt />
+            </button>
+          </nav>
+
           {!isAdmin && (
             <button className={`receipt ${menu ? 'active' : ''}`}>
               <FaReceipt />
@@ -48,6 +81,7 @@ export function Header({ fetchDishes }) {
             </button>
           )}
         </div>
+
         <div className={`menu ${menu ? 'menuOpen' : ''}`}>
           <div className="opennedMenu">
             <Input
