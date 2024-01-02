@@ -22,6 +22,7 @@ export function AuthProvider({ children }) {
       setData({ user, token })
 
       setLoading(false)
+      toast.success(`Bem vindo, ${user.name}!`)
     } catch (error) {
       setLoading(false)
       if (error.response) {
