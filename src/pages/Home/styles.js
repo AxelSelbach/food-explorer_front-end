@@ -35,7 +35,7 @@ export const Content = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    
+
     > section {
       display: flex;
       color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
