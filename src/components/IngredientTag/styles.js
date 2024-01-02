@@ -3,17 +3,17 @@ import styled from 'styled-components'
 export const Container = styled.div`
   display: flex;
   align-items: center;
-  width: 45%;
+  width: fit-content;
 
   border-radius: 8px;
   padding: 4px 8px;
 
   background-color: ${({ theme, isnew }) =>
-    isnew ? 'transparent' : theme.COLORS.DARK_SLATE_GRAY};
-  color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+    isnew ? 'transparent' : theme.COLORS.DARK_SLATE_GRAY} !important;
+  color: ${({ theme }) => theme.COLORS.COLOR_WHITE} !important;
 
   border: ${({ theme, isnew }) =>
-    isnew ? `1px dashed ${theme.COLORS.DARK_SLATE_GRAY}` : 'none'};
+    isnew ? `1px dashed ${theme.COLORS.DARK_SLATE_GRAY}` : 'none'} !important;
 
   button {
     border: none;
@@ -31,9 +31,9 @@ export const Container = styled.div`
     font-size: 16px;
     padding: 12px;
 
-    color: ${({ theme }) => theme.COLORS.COLOR_WHITE};;
+    color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
     background-color: ${({ theme, isnew }) =>
-      isnew ? 'transparent' : theme.COLORS.DARK_SLATE_GRAY};
+      isnew ? 'transparent' : theme.COLORS.DARK_SLATE_GRAY} !important;
 
     border: none;
 

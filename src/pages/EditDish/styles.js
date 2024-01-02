@@ -6,43 +6,74 @@ export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
 
-  overflow: auto;
-  color: white;
-  grid-area: content;
+  overflow: hidden;
+
+  display: grid;
+  grid-template-rows: 10dvh 80dvh 10dvh;
+  grid-template-areas:
+    'header'
+    'content'
+    'footer';
+
+  svg {
+    color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+  }
 `
 
 export const Content = styled.div`
+  grid-area: content;
+
+  padding: 24px 32px;
+
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  justify-content: space-between;
+  align-items: center;
 
-  width: 100%;
-  padding: 24px 32px;
+  overflow: auto;
 
   opacity: 0;
   animation: ${fadeIn} 300ms linear forwards;
 
-  h1 {
-    font-family: Roboto;
-    font-size: 32px;
-  }
-
-  form {
+  .Box {
+    width: 100%;
+    max-width: 1280px;
     display: flex;
     flex-direction: column;
     gap: 24px;
 
-    fieldset {
+    h1 {
+      font-family: Roboto;
+      font-size: 32px;
+      color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+    }
+
+    form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
-      border: none;
+      gap: 24px;
+
+      fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        border: none;
+
+        label {
+          color: ${({ theme }) => theme.COLORS.PEARL_GRAY};
+        }
+
+        @media (min-width: 768px) {
+          display: flex;
+          flex-direction: row;
+        }
+      }
     }
   }
 `
 
 export const InputWrapper = styled.div`
-  width: 100%;
+  width: auto;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -89,12 +120,21 @@ export const InputFile = styled.div`
   input {
     display: none;
   }
+
+  svg {
+    color: ${({ theme }) => theme.COLORS.COLOR_WHITE};
+  }
+
+  @media (min-width: 768px) {
+    width: max-content;
+  }
 `
 export const IngredientsWrapper = styled.div`
+  width: auto;
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   gap: 16px;
-  width: 100%;
   padding: 8px 8px;
 
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_600};
