@@ -10,7 +10,7 @@ import { Header } from '../../components/Header'
 import { Ingredient } from '../../components/Ingredient'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
-import { Container, Content, Edit } from './styles'
+import { Container, Content, Edit, Wrapper } from './styles'
 
 export function DishInfo() {
   const [data, setData] = useState(null)
@@ -56,69 +56,73 @@ export function DishInfo() {
       {
         data &&
         <Content>
-          <div className="dishDetails">
-            <div className="returnButton">
-              <Link to='/'>
-                <ButtonText icon={FaAngleLeft} title={'Voltar'} />
-              </Link>
-            </div>
-            <img
-              src={data.picture}
-              alt={`Imagem da refeição, sobremesa ou bebida ${data.name}`}
-            />
-            <h2>{data.name}</h2>
-            <p>{data.description}</p>
+          <Wrapper>
+            <div className="dishDetails">
+              <div className="returnButton">
+                <Link to='/'>
+                  <ButtonText icon={FaAngleLeft} title={'Voltar'} />
+                </Link>
+              </div>
+              <img
+                src={data.picture}
+                alt={`Imagem da refeição, sobremesa ou bebida ${data.name}`}
+              />
+              <div className="infosWrapper">
+                <h2>{data.name}</h2>
+                <p>{data.description}</p>
 
-            <div className="ingredientsWrapper">
-              {
-                data.ingredients.map(ingredient => (
-                  <Ingredient
-                    key={String(ingredient.id)}
-                    title={ingredient.name}
-                  />
-                ))
-              }
-            </div>
-
-            <div className="buttonsWrapper">
-              {
-                !isAdmin &&
-                <>
-                  <button className="minusBtn" onClick={decrement}>
-                    <FaMinus />
-                  </button>
-                  <span>{amount}</span>
-                  <button className="plusBtn" onClick={increment}>
-                    <FaPlus />
-                  </button>
-                </>
-              }
-
-              {
-                !isAdmin && 
-                <Button
-                  icon={FaReceipt}
-                  backgroundcolor={'#750310'}
-                  title={`pedir ∙ ${data.price.toLocaleString(
-                    'pt-BR', {
-                    style: 'currency',
-                    currency: 'BRL',
+                <div className="ingredientsWrapper">
+                  {
+                    data.ingredients.map(ingredient => (
+                      <Ingredient
+                        key={String(ingredient.id)}
+                        title={ingredient.name}
+                      />
+                    ))
                   }
-                  )}`}
-                />
-              }
+                </div>
+
+                <div className="buttonsWrapper">
+                  {
+                    !isAdmin &&
+                    <>
+                      <button className="minusBtn" onClick={decrement}>
+                        <FaMinus />
+                      </button>
+                      <span>{amount}</span>
+                      <button className="plusBtn" onClick={increment}>
+                        <FaPlus />
+                      </button>
+                    </>
+                  }
+
+                  {
+                    !isAdmin &&
+                    <Button
+                      icon={FaReceipt}
+                      backgroundcolor={'#750310'}
+                      title={`pedir ∙ ${data.price.toLocaleString(
+                        'pt-BR', {
+                        style: 'currency',
+                        currency: 'BRL',
+                      }
+                      )}`}
+                    />
+                  }
+                </div>
+                {
+                  isAdmin &&
+                  <Edit to={`/edit/${data.id}`}>
+                    <Button
+                      backgroundcolor={'#750310'}
+                      title={'Editar prato'}
+                    />
+                  </Edit>
+
+                }
+              </div>
             </div>
-            {
-              isAdmin && 
-                <Edit to={`/edit/${data.id}`}>
-                  <Button
-                    backgroundcolor={'#750310'}
-                    title={'Editar prato'}
-                  />
-                </Edit>
-                
-            }
-          </div>
+          </Wrapper>
         </Content>
       }
       <Footer />
