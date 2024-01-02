@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { fadeIn } from '../../components/Header/styles'
 
 export const Container = styled.div`
   width: 100dvw;
@@ -21,6 +22,10 @@ export const Wrapper = styled.main`
   flex-direction: column;
   align-items: center;
 
+  opacity: 0;
+
+  animation: ${fadeIn} 300ms forwards;
+
   overflow: auto;
 `
 
@@ -37,26 +42,76 @@ export const Content = styled.div`
     flex-direction: column;
 
     > section {
+      max-width: 1280px;
+      width: 100%;
+      height: 260px;
+
       display: flex;
+      align-items: center;
+      flex-wrap: nowrap;
+      justify-content: space-around;
+
+      align-self: center;
+
+      position: relative;
+
+      font-family: Poppins;
       color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_400};
+
+      border-radius: 8px;
 
       margin: 44px 24px 44px 24px;
       height: 120px;
 
+      &::after {
+        content: '';
+        background-color: linear-gradient(180deg, #091e26 0%, #00131c 100%);
+      }
+
+      > img {
+        width: clamp(12.5rem, 10.87vw + 8rem, 18.75rem);
+        align-self: self-end;
+        object-fit: cover;
+
+        @media (min-width: 768px) {
+          width: clamp(12.5rem, 13.87vw + 10rem, 18.75rem);
+        }
+      }
+
       > aside {
-        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+        align-items: flex-start;
+        padding: 16px;
 
         > h2 {
-          font-family: Poppins;
-          font-size: 16px;
+          font-size: clamp(1rem, 2.609vw + 0.413rem, 2.5rem);
           font-weight: 600;
+
+          @media (min-width: 768px) {
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 500;
+            line-height: 140%;
+          }
         }
 
         > p {
-          font-family: Poppins;
-          font-size: 12px;
+          font-size: clamp(0.75rem, 0.435vw + 0.652rem, 1rem);
           font-weight: 400;
+        }
+      }
+
+      @media (min-width: 768px) {
+        margin-top: 120px;
+
+        > h2 {
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 500;
+          line-height: 140%;
         }
       }
     }
