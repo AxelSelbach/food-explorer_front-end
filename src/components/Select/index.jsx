@@ -8,7 +8,7 @@ export function Select({ title, ...rest }) {
       <SelectWrapper>
         <select name="category" required {...rest}>
           <option value="meals">Pratos principais</option>
-          <option value="desserts">Sobremesas</option>
+          <option value="dessert">Sobremesas</option>
           <option value="drinks">Bebidas</option>
         </select>
         <FaAngleDown />
