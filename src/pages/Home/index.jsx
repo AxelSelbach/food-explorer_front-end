@@ -6,15 +6,10 @@ import { Carousel } from '../../components/Carousel'
 import { Footer } from '../../components/Footer'
 import { Header } from '../../components/Header'
 import { Section } from '../../components/Section'
-import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
-import { Cards, Container, Wrapper } from './styles'
+import { Cards, Container, Content, Wrapper } from './styles'
 
 export function Home() {
-  const { user } = useAuth()
-  // eslint-disable-next-line no-unneeded-ternary
-  const admin = user && user.isAdmin ? true : false
-
   const [search, setSearch] = useState('')
   const [meals, setMeals] = useState([])
   const [dessert, setDessert] = useState([])
@@ -42,49 +37,53 @@ export function Home() {
     <Container>
       <Header fetchDishes={(e) => setSearch(e.target.value)} />
       <Wrapper>
-        <section>
-          <img src={doceSplash} alt="" />
-          <aside>
-            <h2>Sabores inigualáveis</h2>
-            <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
-          </aside>
-        </section>
-        <Cards>
+        <Content>
+          <div className="Box">
+            <section>
+              <img src={doceSplash} alt="" />
+              <aside>
+                <h2>Sabores inigualáveis</h2>
+                <p>Sinta o cuidado do preparo com ingredientes selecionados</p>
+              </aside>
+            </section>
+            <Cards>
 
-          <Section title={'Pratos principais'}>
-            <Carousel>
-              {meals.map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish}
-                />
-              ))}
-            </Carousel>
-          </Section>
+              <Section title={'Pratos principais'}>
+                <Carousel>
+                  {meals.map(dish => (
+                    <Card
+                      key={String(dish.id)}
+                      data={dish}
+                    />
+                  ))}
+                </Carousel>
+              </Section>
 
-          <Section title={'Sobremesas'}>
-            <Carousel>
-              {dessert.map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish}
-                />
-              ))}
-            </Carousel>
-          </Section>
+              <Section title={'Sobremesas'}>
+                <Carousel>
+                  {dessert.map(dish => (
+                    <Card
+                      key={String(dish.id)}
+                      data={dish}
+                    />
+                  ))}
+                </Carousel>
+              </Section>
 
-          <Section title={'Bebidas'}>
-            <Carousel>
-              {drinks.map(dish => (
-                <Card
-                  key={String(dish.id)}
-                  data={dish}
-                />
-              ))}
-            </Carousel>
-          </Section>
+              <Section title={'Bebidas'}>
+                <Carousel>
+                  {drinks.map(dish => (
+                    <Card
+                      key={String(dish.id)}
+                      data={dish}
+                    />
+                  ))}
+                </Carousel>
+              </Section>
 
-        </Cards>
+            </Cards>
+          </div>
+        </Content>
       </Wrapper>
       <Footer />
     </Container>

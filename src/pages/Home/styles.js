@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
+
   overflow: hidden;
 
   display: grid;
@@ -14,33 +15,49 @@ export const Container = styled.div`
 `
 
 export const Wrapper = styled.main`
+  width: 100%;
   grid-area: content;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   overflow: auto;
+`
 
-  > section {
+export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .Box {
+    max-width: 1280px;
+    width: 100%;
     display: flex;
-    color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
-    background-color: ${({ theme }) => theme.COLORS.BACKGROUND_400};
+    flex-direction: column;
+    
+    > section {
+      display: flex;
+      color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+      background-color: ${({ theme }) => theme.COLORS.BACKGROUND_400};
 
-    margin: 44px 24px 44px 24px;
-    height: 120px;
+      margin: 44px 24px 44px 24px;
+      height: 120px;
 
-    > aside {
-      margin-top: 10px;
+      > aside {
+        margin-top: 10px;
 
-      > h2 {
-        font-family: Poppins;
-        font-size: 16px;
-        font-weight: 600;
-      }
+        > h2 {
+          font-family: Poppins;
+          font-size: 16px;
+          font-weight: 600;
+        }
 
-      > p {
-        font-family: Poppins;
-        font-size: 12px;
-        font-weight: 400;
+        > p {
+          font-family: Poppins;
+          font-size: 12px;
+          font-weight: 400;
+        }
       }
     }
   }
