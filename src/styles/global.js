@@ -9,6 +9,7 @@ export default createGlobalStyle`
 
   body {
     background-color: ${({ theme }) => theme.COLORS.BACKGROUND_800};
+    overflow-x: hidden;
     display: grid;
     grid-template-rows: 10dvh 80dvh 10dvh;
     grid-template-areas:
@@ -16,6 +17,18 @@ export default createGlobalStyle`
     'content'
     'footer';
   }
+
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.COLORS.BACKGROUND_800}; 
+}
+
+::-webkit-scrollbar-thumb {
+  background: ${({ theme }) => theme.COLORS.CYAN_ORIENT};  
+}
 
   a {
     text-decoration: none;
