@@ -31,36 +31,39 @@ export function SignIn() {
           <h1>Food Explorer</h1>
         </div>
 
-        <div className="inputWrapper">
-          <label htmlFor="email">Email</label>
-          <Input
-            type="text"
-            icon={FaEnvelope}
-            id="email"
-            placeholder="exemplo@exemplo.com.br"
-            onChange={e => setEmail(e.target.value)}
-          />
-        </div>
+        <section>
+          <h2>Faça login</h2>
+          <div className="inputWrapper">
+            <label htmlFor="email">Email</label>
+            <Input
+              type="text"
+              icon={FaEnvelope}
+              id="email"
+              placeholder="exemplo@exemplo.com.br"
+              onChange={e => setEmail(e.target.value)}
+            />
+          </div>
 
-        <div className="inputWrapper">
-          <label htmlFor="password">Senha</label>
-          <Input
-            type="password"
-            icon={FaKey}
-            id="password"
-            placeholder="Senha de no mínimo 6 caracteres"
-            onChange={e => setPassword(e.target.value)}
-          />
-        </div>
+          <div className="inputWrapper">
+            <label htmlFor="password">Senha</label>
+            <Input
+              type="password"
+              icon={FaKey}
+              id="password"
+              placeholder="Senha de no mínimo 6 caracteres"
+              onChange={e => setPassword(e.target.value)}
+            />
+          </div>
 
-        <Button
-          title={'Entrar'}
-          backgroundcolor={'#750310'}
-          onClick={handleSignIn}
-        />
-        <Link to="/register">
-          <ButtonText title={'Criar uma conta'} />
-        </Link>
+          <Button
+            title={'Entrar'}
+            backgroundcolor={'#750310'}
+            onClick={handleSignIn}
+          />
+          <Link to="/register">
+            <ButtonText title={'Criar uma conta'} />
+          </Link>
+        </section>
       </Form>
     </Container>
   )
