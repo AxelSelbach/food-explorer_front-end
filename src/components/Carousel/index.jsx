@@ -25,19 +25,15 @@ export function Carousel({ children }) {
           slidesPerView: 2,
           spaceBetween: 24,
         },
-        576: {
+        680: {
           slidesPerView: 3,
           spaceBetween: 24,
         },
 
-        768: {
+        1020: {
           slidesPerView: 4,
           spaceBetween: 24,
-        },
-        1420: {
-          slidesPerView: 5,
-          spaceBetween: 24,
-        },
+        }
       }}
     >
       {children.map((card, index) => (
