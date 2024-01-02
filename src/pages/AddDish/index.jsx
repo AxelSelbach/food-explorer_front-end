@@ -11,10 +11,12 @@ import { Select } from '../../components/Select'
 import { api, imagesAPI } from '../../services/api'
 import {
   BackLink,
+  ButtonsWrapper,
   Container,
   Content,
   IngredientsWrapper,
   InputFile,
+  InputWrapper,
 } from './styles'
 
 export function AddDish() {
@@ -56,7 +58,8 @@ export function AddDish() {
       !category ||
       !ingredients ||
       !price ||
-      !description
+      !description ||
+      ingredients.length === 0
     ) {
       toast.info('Para fazer o envio, é necessário preencher todos os campos!')
       return
@@ -93,85 +96,109 @@ export function AddDish() {
     <Container>
       <Header />
       <Content>
-        <BackLink to="/">
-          <ButtonText
-            // eslint-disable-next-line prettier/prettier
-            icon={FaAngleLeft}
-            title={'Voltar'}
-          />
-        </BackLink>
+        <div className="Box">
+          <BackLink to="/">
+            <ButtonText
+              // eslint-disable-next-line prettier/prettier
+              icon={FaAngleLeft}
+              title={'Voltar'}
+            />
+          </BackLink>
 
-        <form>
           <h1>Novo Prato</h1>
-          <fieldset>
-            <label htmlFor="picture">Imagem do prato</label>
-            <InputFile>
-              <FaUpload />
-              <label htmlFor="picture">Selecione uma imagem</label>
-              <input className="inputFile" type="file" id="picture" />
-            </InputFile>
+          <form onSubmit={(e) => e.preventDefault()}>
+            <fieldset>
+              <InputWrapper>
+                <label htmlFor="picture">Imagem do prato</label>
+                <InputFile>
+                  <FaUpload />
+                  <label htmlFor="picture">Selecione uma imagem</label>
+                  <input
+                    className="inputFile"
+                    onChange={(e) => {
+                      setPicture(e.target.files[0])
+                    }}
+                    type="file"
+                    id="picture"
+                  />
+                </InputFile>
+              </InputWrapper>
 
-            <label htmlFor="name">Nome</label>
-            <input
-              placeholder={'Ex.: Salada Ceasar'}
-              type="text"
-              id="name"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-            />
-
-            <Select
-              title={'Categoria'}
-              onChange={(e) => setCategory(e.target.value)}
-            />
-          </fieldset>
-          <fieldset>
-            <label htmlFor="ingredients">Ingredients</label>
-            <IngredientsWrapper>
-              {ingredients.map((ingredient, index) => (
-                // eslint-disable-next-line prettier/prettier
-                <IngredientTag
-                  key={String(index)}
-                  value={ingredient}
-                  onClick={() => handleRemoveIngredient(ingredient)}
+              <InputWrapper>
+                <label htmlFor="name">Nome</label>
+                <input
+                  placeholder={'Ex.: Salada Ceasar'}
+                  type="text"
+                  id="name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                 />
-              ))}
-              <IngredientTag
-                placeholder="Adicionar"
-                isNew
-                id="ingredients"
-                value={newIngredient}
-                // eslint-disable-next-line prettier/prettier
-                onChange={e => setNewIngredient(e.target.value)}
-                onClick={handleAddLink}
+              </InputWrapper>
+
+              <Select
+                title={'Categoria'}
+                onChange={(e) => setCategory(e.target.value)}
               />
-            </IngredientsWrapper>
-            <label htmlFor="price">Preço</label>
-            <input
-              type="number"
-              id="price"
-              placeholder="R$ 00,00"
-              onChange={(e) => setPrice(e.target.value)}
-              required
-            />
-          </fieldset>
-          <label htmlFor="description">Descrição</label>
-          <textarea
-            id="description"
-            placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
-            cols="30"
-            rows="10"
-            onChange={(e) => setDescription(e.target.value)}
-            required
-          ></textarea>
-          <Button
-            title="Criar Prato"
-            type={'submit'}
-            backgroundcolor={'#AB4D55'}
-            onClick={handleAddDish}
-          />
-        </form>
+            </fieldset>
+            <fieldset>
+              <InputWrapper>
+                <label htmlFor="ingredients">Ingredients</label>
+                <IngredientsWrapper>
+                  {ingredients.map((ingredient, index) => (
+                    // eslint-disable-next-line prettier/prettier
+                    <IngredientTag
+                      key={String(index)}
+                      value={ingredient}
+                      onClick={() => handleRemoveIngredient(ingredient)}
+                    />
+                  ))}
+                  <IngredientTag
+                    placeholder="Adicionar"
+                    isNew
+                    id="ingredients"
+                    value={newIngredient}
+                    // eslint-disable-next-line prettier/prettier
+                    onChange={e => setNewIngredient(e.target.value)}
+                    onClick={handleAddLink}
+                  />
+                </IngredientsWrapper>
+              </InputWrapper>
+              <InputWrapper>
+                <label htmlFor="price">Preço</label>
+                <input
+                  type="number"
+                  id="price"
+                  placeholder="R$ 00,00"
+                  onChange={(e) => setPrice(e.target.value)}
+                  required
+                />
+              </InputWrapper>
+            </fieldset>
+            <InputWrapper>
+              <label htmlFor="description">Descrição</label>
+              <textarea
+                id="description"
+                placeholder="Fale brevemente sobre o prato, seus ingredientes e composição"
+                cols="30"
+                rows="10"
+                onChange={(e) => setDescription(e.target.value)}
+                required
+              ></textarea>
+            </InputWrapper>
+
+            <ButtonsWrapper>
+              <aside>
+                <Button
+                  title="Criar Prato"
+                  type={'submit'}
+                  backgroundcolor={'#AB4D55'}
+                  onClick={handleAddDish}
+                />
+              </aside>
+            </ButtonsWrapper>
+          </form>
+        </div>
       </Content>
       <Footer />
     </Container>
