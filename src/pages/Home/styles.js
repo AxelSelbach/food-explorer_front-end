@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100dvw;
   height: 100dvh;
+  overflow: hidden;
 
   display: grid;
   grid-template-rows: 10dvh 80dvh 10dvh;
