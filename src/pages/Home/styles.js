@@ -43,7 +43,7 @@ export const Content = styled.div`
 
     > section {
       max-width: 1280px;
-      width: 100%;
+      width: 98%;
 
       display: flex;
       align-items: center;
@@ -58,7 +58,7 @@ export const Content = styled.div`
       color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
       background-color: ${({ theme }) => theme.COLORS.BACKGROUND_400};
 
-      border-radius: 8px;
+      border-radius: 2px;
 
       margin: 44px 24px 44px 24px;
       height: 120px;
@@ -104,8 +104,9 @@ export const Content = styled.div`
       }
 
       @media (min-width: 768px) {
-        margin-top: 120px;
+        margin-top: 80px;
         height: 180px;
+        border-radius: 8px;
       }
     }
   }
