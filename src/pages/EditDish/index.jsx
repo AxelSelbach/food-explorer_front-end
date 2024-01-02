@@ -223,17 +223,19 @@ export function EditDish() {
             </InputWrapper>
 
             <ButtonsWrapper>
-              <Button
-                title="Excluir prato"
-                backgroundcolor={'#0D161B'}
-                onClick={handleDelete}
-              />
+              <aside>
+                <Button
+                  title="Excluir prato"
+                  backgroundcolor={'#0D161B'}
+                  onClick={handleDelete}
+                />
 
-              <Button
-                title="Editar Prato"
-                backgroundcolor={'#AB4D55'}
-                onClick={handleEditDish}
-              />
+                <Button
+                  title="Editar Prato"
+                  backgroundcolor={'#AB4D55'}
+                  onClick={handleEditDish}
+                />
+              </aside>
             </ButtonsWrapper>
           </form>
         </div>

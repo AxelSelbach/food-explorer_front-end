@@ -144,9 +144,24 @@ export const IngredientsWrapper = styled.div`
 
 export const ButtonsWrapper = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  gap: 32px;
+
+  aside {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+
+    @media (min-width: 768px) {
+      width: 50%;
+    }
+  }
+
+  @media (min-width: 768px) {
+    width: 100%;
+
+    display: flex;
+    justify-content: flex-end;
+  }
 `
 
 export const BackLink = styled(Link)`
