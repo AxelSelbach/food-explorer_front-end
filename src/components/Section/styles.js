@@ -10,13 +10,19 @@ export const Container = styled.div`
     font-family: 'Poppins';
     font-weight: 500;
     font-size: 18px;
+    line-height: 140%;
     margin-top: 24px;
 
     color: ${({ theme }) => theme.COLORS.LIGHT_GRAY};
+
+    @media (min-width: 768px) {
+      font-size: 24px;
+      font-style: normal;
+    }
   }
 
   > menu {
     width: 100%;
-    height: 360px;
+    height: auto;
   }
 `
