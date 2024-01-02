@@ -44,7 +44,6 @@ export const Content = styled.div`
     > section {
       max-width: 1280px;
       width: 100%;
-      height: 260px;
 
       display: flex;
       align-items: center;
@@ -106,13 +105,7 @@ export const Content = styled.div`
 
       @media (min-width: 768px) {
         margin-top: 120px;
-
-        > h2 {
-          font-size: 40px;
-          font-style: normal;
-          font-weight: 500;
-          line-height: 140%;
-        }
+        height: 180px;
       }
     }
   }
