@@ -1,7 +1,7 @@
 import styled, { keyframes } from 'styled-components'
 import { fadeIn } from '../../components/Header/styles'
 
-export const topDown = keyframes`
+const topDown = keyframes`
   0% {
     transform: translateY(100%)
   }
