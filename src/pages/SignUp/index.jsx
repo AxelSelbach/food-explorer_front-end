@@ -43,6 +43,8 @@ export function SignUp() {
           <h1>Food Explorer</h1>
         </div>
 
+        <section>
+        <h2>Crie sua conta</h2>
         <div className="inputWrapper">
           <label htmlFor="name">Seu nome</label>
           <Input
@@ -83,6 +85,7 @@ export function SignUp() {
         <Link to="/">
           <ButtonText title={'Já tenho uma conta'} />
         </Link>
+        </section>
       </Form>
     </Container>
   )
