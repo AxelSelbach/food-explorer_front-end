@@ -96,7 +96,7 @@ export function EditDish() {
               ingredients,
               picture: res.data.url,
             }),
-          toast.success('Prato criado com sucesso!'),
+          toast.success('Prato editado com sucesso!'),
           setTimeout(() => {
             handleReturn()
           }, 3500),
