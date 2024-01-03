@@ -1,8 +1,33 @@
-# React + Vite
+# FoodExplorer (Front-end) - ☕
+Esta aplicação simula um Web App para um restaurante, rede de fastfood,  etc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+>Projeto Final Explorer (WEB)
+![preview](https://cdn.discordapp.com/attachments/1135990801948745979/1154859433684381716/Mockups.png)
 
-Currently, two official plugins are available:
+[🔗 Clique aqui para acessar o deploy da aplicação! ](https://food-explorer-front-end-cyan.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+## ⚙ Tecnologias ⚙ 
+
+O FoodExplorer foi desenvolvido usando as seguintes tecnologias:
+
+- ReactJS
+- Styled Components
+- Swiper
+- Axios
+- Toastify
+- HTML
+- CSS
+
+##
+- Desafio final do curso Explorer da RocketSeat
+
+- AVISO: Estou utilizando um serviço de hospedagem gratuita, portanto, pode haver demora no carregamente de imagens, login na aplicação e etc. Tenha paciência 🙏
+
+# 👨‍💻 Usuário admin:
+
+- usuário: admin@gmail.com
+- senha: 123
+
+
+[Acesse também o repositório do back-end! 🚀](https://github.com/AxelSelbach/food-explorer_back-end)
