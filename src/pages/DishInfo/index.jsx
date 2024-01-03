@@ -11,6 +11,7 @@ import { Ingredient } from '../../components/Ingredient'
 import { useAuth } from '../../hooks/auth'
 import { api } from '../../services/api'
 import { Container, Content, Edit, Wrapper } from './styles'
+import { toast } from 'react-toastify'
 
 export function DishInfo() {
   const [data, setData] = useState(null)
@@ -20,6 +21,12 @@ export function DishInfo() {
   const isAdmin = user && user.isAdmin ? true : false
 
   const params = useParams()
+
+  function underDevelopment() {
+    toast.info(
+      'Esta funcionalidade está em desenvolvimento, em breve será atualizada!',
+    )
+  }
 
   function decrement() {
     if (amount > 0) {
@@ -107,6 +114,7 @@ export function DishInfo() {
                         currency: 'BRL',
                       }
                       )}`}
+                      onClick={underDevelopment}
                     />
                   }
                 </div>

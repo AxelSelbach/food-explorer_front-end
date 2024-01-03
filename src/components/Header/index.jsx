@@ -1,6 +1,7 @@
 /* eslint-disable no-unneeded-ternary */
 import { useState } from 'react'
 import { FaReceipt, FaSearch, FaSignOutAlt } from 'react-icons/fa'
+import { toast } from 'react-toastify'
 import headerLogo from '../../assets/headerLogo.png'
 import { useAuth } from '../../hooks/auth'
 import { Button } from '../Button'
@@ -13,6 +14,12 @@ export function Header({ fetchDishes }) {
   const { user, signOut } = useAuth()
 
   const isAdmin = user && user.isAdmin ? true : false
+
+  function underDevelopment() {
+    toast.info(
+      'Esta funcionalidade está em desenvolvimento, em breve será atualizada!',
+    )
+  }
 
   function openCloseMenu() {
     setMenu(!menu)
@@ -56,6 +63,7 @@ export function Header({ fetchDishes }) {
                 icon={FaReceipt}
                 backgroundcolor={'#750310'}
                 title={'Pedidos(0)'}
+                onClick={underDevelopment}
               />
             )}
             {isAdmin && (

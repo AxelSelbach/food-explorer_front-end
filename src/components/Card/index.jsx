@@ -5,12 +5,19 @@ import { FaChevronRight, FaMinus, FaPlus, FaRegHeart, FaPencilAlt } from 'react-
 import { useAuth } from '../../hooks/auth'
 import { Button } from '../Button'
 import { Container, Content, EditDish, DishLink } from './styles'
+import { toast } from 'react-toastify'
 
 export function Card({ data }) {
   const [quantity, setQuantity] = useState(1)
 
   const { user } = useAuth()
   const isAdmin = user && user.isAdmin ? true : false
+
+  function underDevelopment() {
+    toast.info(
+      'Esta funcionalidade está em desenvolvimento, em breve será atualizada!',
+    )
+  }
 
   function increment() {
     if (quantity >= 0) setQuantity(quantity + 1)
@@ -25,7 +32,7 @@ export function Card({ data }) {
       <Content>
         {
           !isAdmin && 
-          <button className="favoriteButton">
+          <button className="favoriteButton" onClick={underDevelopment}>
             <FaRegHeart />
           </button>
         }
@@ -75,6 +82,7 @@ export function Card({ data }) {
             <Button
               title={'incluir'}
               backgroundcolor={'#750310'}
+              onClick={underDevelopment}
             />
         </DishLink>
         }
