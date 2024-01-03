@@ -28,6 +28,7 @@ export const Container = styled.header`
   align-content: center;
   grid-area: header;
   background-color: ${({ theme }) => theme.COLORS.BACKGROUND_900};
+  animation: ${fadeIn} 300ms linear;
 `
 
 export const Wrapper = styled.div`
@@ -128,7 +129,7 @@ export const Wrapper = styled.div`
 
       @media (min-width: 768px) {
         position: absolute;
-        top: 48px;
+        top: 10px;
         right: 16px;
       }
     }
@@ -184,12 +185,6 @@ export const Wrapper = styled.div`
     @media (min-width: 768px) {
       display: none;
     }
-  }
-
-  .centerLogo,
-  .receipt,
-  .Content p {
-    animation: ${fadeIn} 300ms linear;
   }
   .centerLogo.active,
   .receipt.active,

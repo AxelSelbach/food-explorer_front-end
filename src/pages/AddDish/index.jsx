@@ -30,21 +30,32 @@ export function AddDish() {
 
   const navigate = useNavigate()
 
+  const handlePriceChange = (e) => {
+    const inputValue = e.target.value
+
+    const validInput = inputValue.replace(/[^0-9.]/g, '')
+
+    setPrice(validInput)
+  }
+
+  function handleReturn() {
+    navigate('/')
+  }
+
   function handleRemoveIngredient(deleted) {
     setIngredients((prevState) =>
       prevState.filter((ingredient) => ingredient !== deleted),
     )
   }
 
-  function handleAddLink() {
+  function handleAddIngredient(newIngredient) {
     if (ingredients.includes(newIngredient)) {
       toast.error('Ingrediente duplicado!')
       return
     }
 
-    if (ingredients.length === 0 || newIngredient === '') {
-      toast.error('Ingrediente Vazio / Inexistente')
-      return
+    if (newIngredient.value === '') {
+      toast.error('Ingrediente vazio!')
     }
 
     setIngredients((prevState) => [...prevState, newIngredient])
@@ -56,19 +67,19 @@ export function AddDish() {
       !picture ||
       !name ||
       !category ||
-      !ingredients ||
       !price ||
       !description ||
-      ingredients.length === 0
+      !ingredients
     ) {
       toast.info('Para fazer o envio, é necessário preencher todos os campos!')
+      console.log(picture, name, category, price, description, ingredients)
       return
     }
 
     const formData = new FormData()
     formData.append('photo', picture)
     try {
-      toast.promise(
+      await toast.promise(
         imagesAPI.post('', formData).then(
           (res) =>
             api.post('/dishes', {
@@ -80,7 +91,9 @@ export function AddDish() {
               description,
             }),
           toast.success('Prato criado com sucesso!'),
-          navigate('-1'),
+          setTimeout(() => {
+            handleReturn()
+          }, 3000),
         ),
       )
     } catch (error) {
@@ -138,6 +151,7 @@ export function AddDish() {
 
               <Select
                 title={'Categoria'}
+                value={category}
                 onChange={(e) => setCategory(e.target.value)}
               />
             </fieldset>
@@ -148,7 +162,7 @@ export function AddDish() {
                   {ingredients.map((ingredient, index) => (
                     // eslint-disable-next-line prettier/prettier
                     <IngredientTag
-                      key={String(index)}
+                      key={index}
                       value={ingredient}
                       onClick={() => handleRemoveIngredient(ingredient)}
                     />
@@ -160,17 +174,23 @@ export function AddDish() {
                     value={newIngredient}
                     // eslint-disable-next-line prettier/prettier
                     onChange={e => setNewIngredient(e.target.value)}
-                    onClick={handleAddLink}
+                    onClick={() => {
+                      handleAddIngredient(newIngredient)
+                    }}
                   />
                 </IngredientsWrapper>
               </InputWrapper>
               <InputWrapper>
                 <label htmlFor="price">Preço</label>
                 <input
-                  type="number"
+                  type="text"
                   id="price"
-                  placeholder="R$ 00,00"
-                  onChange={(e) => setPrice(e.target.value)}
+                  value={price}
+                  placeholder={`${price.toLocaleString('pt-BR', {
+                    style: 'currency',
+                    currency: 'BRL',
+                  })}`}
+                  onChange={handlePriceChange}
                   required
                 />
               </InputWrapper>
@@ -191,7 +211,6 @@ export function AddDish() {
               <aside>
                 <Button
                   title="Criar Prato"
-                  type={'submit'}
                   backgroundcolor={'#AB4D55'}
                   onClick={handleAddDish}
                 />
