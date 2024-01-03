@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { FaAngleLeft, FaUpload } from 'react-icons/fa'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { Button } from '../../components/Button'
 import { ButtonText } from '../../components/ButtonText'
@@ -23,12 +23,25 @@ export function EditDish() {
   const [picture, setPicture] = useState('')
   const [name, setName] = useState('')
   const [category, setCategory] = useState('')
-  const [price, setPrice] = useState('')
+  const [price, setPrice] = useState(0)
   const [description, setDescription] = useState('')
   const [ingredients, setIngredients] = useState([])
   const [newIngredient, setNewIngredient] = useState('')
 
+  const navigate = useNavigate()
   const params = useParams()
+
+  const handlePriceChange = (e) => {
+    const inputValue = e.target.value
+
+    const validInput = inputValue.replace(/[^0-9.]/g, '')
+
+    setPrice(validInput)
+  }
+
+  function handleReturn() {
+    navigate('/')
+  }
 
   function handleRemoveIngredient(deleted) {
     setIngredients((prevState) =>
@@ -38,6 +51,8 @@ export function EditDish() {
 
   async function handleDelete() {
     await api.delete(`/dishes/${params.id}`)
+    toast.success('Prato deletado com sucesso!')
+    handleReturn()
   }
 
   function handleAddIngredient(newIngredient) {
@@ -81,11 +96,10 @@ export function EditDish() {
               ingredients,
               picture: res.data.url,
             }),
-          {
-            pending: 'Enviando dados...',
-            success: 'Prato editado com sucesso!',
-            error: 'Erro ao atualizar prato!',
-          },
+          toast.success('Prato criado com sucesso!'),
+          setTimeout(() => {
+            handleReturn()
+          }, 3500),
         ),
       )
     } catch (error) {
@@ -187,6 +201,7 @@ export function EditDish() {
                     placeholder="Adicionar"
                     isNew
                     id="ingredients"
+                    value={newIngredient}
                     // eslint-disable-next-line prettier/prettier
                     onChange={e => setNewIngredient(e.target.value)}
                     onClick={() => {
@@ -198,13 +213,14 @@ export function EditDish() {
               <InputWrapper>
                 <label htmlFor="price">Preço</label>
                 <input
-                  type="number"
+                  type="text"
                   id="price"
+                  value={price}
                   placeholder={`${price.toLocaleString('pt-BR', {
                     style: 'currency',
                     currency: 'BRL',
                   })}`}
-                  onChange={(e) => setPrice(e.target.value)}
+                  onChange={handlePriceChange}
                   required
                 />
               </InputWrapper>
@@ -233,6 +249,7 @@ export function EditDish() {
                 <Button
                   title="Editar Prato"
                   backgroundcolor={'#AB4D55'}
+                  type={'submit'}
                   onClick={handleEditDish}
                 />
               </aside>
