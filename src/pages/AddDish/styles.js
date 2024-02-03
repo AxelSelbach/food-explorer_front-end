@@ -33,6 +33,8 @@ export const Content = styled.div`
 
   width: 100%;
 
+  overflow: auto;
+
   opacity: 0;
   animation: ${fadeIn} 300ms linear forwards;
 
