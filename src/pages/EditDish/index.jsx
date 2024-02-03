@@ -71,7 +71,6 @@ export function EditDish() {
 
   async function handleEditDish() {
     if (
-      !picture ||
       !name ||
       !category ||
       !price ||
